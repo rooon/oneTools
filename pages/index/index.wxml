@@ -1,0 +1,117 @@
+<view class="index clearfix">
+  <view class="editIndex" wx:if="{{tab}}">
+    <view class="h1">Tips:这是你的微信头像和昵称</view>
+    <view class="info">
+        <image class="infohd" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <text class="infoname">{{userInfo.nickName}}</text>
+        <button wx:if="{{canIUse}}" bindgetuserinfo="bindGetUserInfo" open-type="getUserInfo" class="button" wx:if="{{hdimg === '' && hdname === 'default'}}">获取头像昵称</button> 
+    </view> 
+    <view class="editbox">
+        <textarea placeholder="这一刻想法..." bindinput="whiteword"/>
+        <view class="upimg clearfix">
+            <view class="imgList" wx:for ="{{imglist}}" wx:key wx:if="{{imglist.length > 0}}">
+              <image src="{{item}}" mode="aspecFill" class ="img"/>
+              <view class="delimg" bindtap="delimg" data-index="{{index}}"></view>
+            </view>
+            <view class="upbtn" bindtap="chooseimage" wx:if="{{imglist.length < 9}}">
+              <view class="span"></view>
+              <view class="span"></view>
+            </view>
+        </view>
+    </view>
+    <view class="options">
+      <view class="list">
+          <view class="listname">1、你需要多少个赞？</view>
+          <view class="listbox">
+            <slider min="1" max="100" value="0" id="range" class="range"  bindchanging="sliderchange" step="1"  show-value/>
+          </view>
+      </view>
+      <view class="list">
+          <view class="listname">2、你需要谁给你点赞？</view>
+          <view class="listcont">
+            <radio-group class="radio-group" bindchange="radioChange">
+              <view class="select" wx:for="{{radioitems}}" wx:key>
+              <label>
+                  <radio value="{{item.value}}" checked="{{item.checked}}" class="radio"/>
+                  {{item.name}}
+              </label>
+              </view>
+            </radio-group>
+          </view>
+      </view>
+      <view class="list">
+          <view class="listname">3、需要评论嘛？</view>
+          <view class="listbox">
+            <switch name="comment" class="switch" bindchange="switchChange"/> 
+          </view>
+          <view class="comment" wx:if="{{comment}}">
+            <view class="div">评论数量：<slider min="1" max="{{commentmax}}" id="commentrange" class="commentrange"  step="1" bindchanging="commentslider" show-value/></view>
+            <view class="div">评论内容：<input type="text" placeholder="需要填写/未填写则默认随机显示" class="commentinput" bindinput ="whitecomment"/></view>
+          </view>
+      </view>
+      <view class="list">
+          <view class="listname">3、显示地理位置嘛？</view>
+          <view class="listbox">
+              <switch name="location" class="switch" bindchange="switchChange2"/> 
+          </view>
+          <view class="location" wx:if="{{location}}">
+            <view class="btn">
+              <view bindtap="locationClick" data-num="1" class="span {{current == 1 ? 'current':''}}" id="autolocation">自动获取</view>
+              <view bindtap="locationClick" data-num="2" class="span {{current == 2 ? 'current':''}}" id="manuallocation">手动填写</view>
+            </view>
+            <view class="showlocation">
+                <input type="text" value="{{wz}}" disabled ="{{disabled}}" class="locationinput" placeholder="请手动获取，或者手写" maxlength="20" bindinput="whitewz"/>
+            </view>
+          </view>
+      </view>
+      <view class="list">
+          <view class="generate" bindtap="generate"  data-change="ptm">生成我的朋友圈</view>
+      </view>
+    </view>
+  </view>
+  <view class="showIndex" wx:if="{{!tab}}" id="showIndex">
+    <view class="hd">
+      <view class="back" bindtap="back"><em></em>朋友圈</view>
+      <span class="camera"></span>
+    </view>
+     <view class="main">
+      <view class="hdbg">
+        <image src="{{bgimg}}" class="img" bindtap="choosebgimage"/>
+        <view class="name">{{hdname}}</view>
+        <view class="hdimg"><image src="{{hdimg}}" class="img"/></view>
+      </view>
+      <view class="content">
+        <view class="list clearfix">
+          <view class="listLeft">
+            <view class="hdimg"><image src="{{hdimg}}" class="img"/></view>
+          </view>
+          <view class="listRight">
+            <view class="name">{{hdname}}</view>
+            <view class="desc">
+                <view class="word">{{word}}</view>
+                <view class="pic clearfix {{imglist.length > 1 ? 'more' : 'one'}}" wx:if="{{imglist.length > 0}}" wx:key>
+                  <image src="{{item}}" wx:for ="{{imglist}}" wx:key class="img"/> 
+                </view>
+            </view>
+            <view class="wz" wx:if="{{location}}">
+                <text class="span">{{wz}}</text>
+            </view>
+            <view class="qt">
+                <text class="span">1小时前</text>
+                <text class="span"></text>
+            </view>
+            <view class="gc">
+              <view class="GiveList">
+                  <text class="xin"></text>
+                  <text class="p" v-for="list in list">{{list}}<text class="d">,</text></text>
+              </view>
+              <view class="commentList" wx:if="{{comment}}">
+                  <view class="p" wx:for= "{{commentlist}}" wx:key><text class="span">{{item.name}}</text>：{{item.comment}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view> 
+  </view>
+</view>
