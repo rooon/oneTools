@@ -248,14 +248,14 @@
 }
 .location .btn{
 	margin:20rpx auto;
-	height: 16px;
+	height: 16rpx;
 }
 .location .btn .span{
   float:left;
 	display: inline-block;
 	padding:15rpx;
-	height: 50rpx;
-	line-height: 50rpx;
+	height: 35rpx;
+	line-height: 35rpx;
 	border:1rpx solid #aaa;
 	margin-right:35rpx;
 	width: 240rpx;
@@ -286,12 +286,12 @@
 	height: 96rpx;
 }
 .generate{
-	height: 120rpx;
-	width: 658rpx;
+	height: 110rpx;
+	width: 650rpx;
 	text-align: center;
 	font-family: "Microsoft YaHei";
-	font-size: 56rpx;
-	line-height: 120rpx;
+	font-size: 50rpx;
+	line-height: 110rpx;
 	cursor: pointer;
 	border-radius: 8rpx;
 	background: #09BB07;

@@ -1,0 +1,21 @@
+<view class="home clearfix">
+  <view class="item" bindtap="bindViewTap">
+      <image class="icon quan" src="../images/pyq.png" background-size="cover"></image>
+      <text class="name">随你赞</text>
+      <text class="desc">快速生成朋友圈截图</text>
+  </view>
+  <view class="item" bindtap="">
+      <image class="icon quan" src="../images/weather.png" background-size="contain"></image>
+      <text class="name">天气通</text>
+      <text class="desc">快速查询当天当地天气</text>
+  </view>
+  <view class="item" bindtap="">
+      <image class="icon quan" src="../images/gs.png" background-size="cover"></image>
+      <text class="name">高速费查询</text>
+      <text class="desc">查询途径高速的过路费（仅供参考）</text>
+  </view>
+  <view class="item" bindtap="">
+      <image class="icon quan" src="../images/jqqd.png" background-size="cover"></image>
+      <text class="name">敬请期待</text>
+  </view>
+</view>
